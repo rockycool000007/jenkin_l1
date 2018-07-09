@@ -16,7 +16,7 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'JavaProgram.class'
-            build job: 'build-java'
+            build job: 'build-java-program'
         }
     }
 }

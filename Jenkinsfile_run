@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("Retrive Artifact") {
             steps {
-                copyArtifacts(projectName: 'sourceproject');
+                copyArtifacts(projectName: 'compile-java-program');
             }
         }  
         stage("Run the code") {
