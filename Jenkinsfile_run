@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage("Retrive Artifact") {
+            steps {
+                copyArtifacts(projectName: 'sourceproject');
+            }
+        }  
         stage("Run the code") {
             steps {
                 sh "'java' JavaProgram.class"
