@@ -8,7 +8,6 @@ pipeline {
         }  
         stage("Run the code") {
             steps {
-                sh "'ls' -l"
                 sh "'java' JavaProgram"
             }
         }    
