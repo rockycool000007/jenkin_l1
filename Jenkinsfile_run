@@ -1,9 +1,12 @@
 pipeline {
     agent any
+    parameters{
+      string(name: 'buildNumber', defaultValue: '', description: 'Please Build Number')
+    }
     stages {
         stage("Retrive Artifact") {
             steps {
-                copyArtifacts(projectName: 'compile-java-program');
+                copyArtifacts(projectName: 'compile-java-program',specific: params.buildNumber);
             }
         }  
         stage("Run the code") {
