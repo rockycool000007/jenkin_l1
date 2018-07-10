@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage("Retrive Artifact") {
             steps {
+                echo "${params.buildNumber}"
                 copyArtifacts projectName: 'compile-java-program', selector: specific(params.buildNumber)
             }
         }  
