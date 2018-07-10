@@ -19,7 +19,7 @@ pipeline {
     post {
         success{
             archiveArtifacts artifacts: 'JavaProgram.class'
-            build job: 'build-java-program', parameters: [[$class: 'StringParameterValue', name: 'buildNumber', value: "${BUILD_NUMBER}"]]
+            build job: 'build-java-program'
         }
          always {  
             cleanWs()
