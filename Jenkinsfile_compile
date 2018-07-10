@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'agent1' }
+    agent any
     parameters{
       string(name: 'branch', defaultValue: 'master', description: 'Please enter branch')
     }
