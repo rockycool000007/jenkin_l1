@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage("clone the code") {
             steps {
-                git url "https://github.com/vinitkumargoel/jenkin_l1" branch "${params.branch}"
+                git branch: '${params.branch}', url: 'https://github.com/vinitkumargoel/jenkin_l1'
             }
         }
         stage('Compile') {
