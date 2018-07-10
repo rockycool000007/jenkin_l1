@@ -15,13 +15,18 @@ pipeline {
                 sh "'javac' JavaProgram.java"
             }
         }
+        stage('Archive ') {
+            steps {
+                archiveArtifacts artifacts: 'JavaProgram.class'
+            }
+        }
+
     }
     post {
         success{
-            archiveArtifacts artifacts: 'JavaProgram.class'
             build job: 'build-java-program'
         }
-         always {  
+        always {  
             cleanWs()
         }
     }
