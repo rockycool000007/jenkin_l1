@@ -16,7 +16,7 @@ pipeline {
         }
     }
     post {
-        sucess{
+        success{
             archiveArtifacts artifacts: 'JavaProgram.class'
             build job: 'build-java-program'
         }
