@@ -1,5 +1,8 @@
 pipeline {
     agent { label 'agent1' }
+    parameters{
+      string(name: 'branch', defaultValue: 'master', description: 'Please enter branch')
+    }
     stages {
         stage("clone the code") {
             steps {
@@ -13,9 +16,11 @@ pipeline {
         }
     }
     post {
-        always {
+        sucess{
             archiveArtifacts artifacts: 'JavaProgram.class'
             build job: 'build-java-program'
+        }
+         always {  
             cleanWs()
         }
     }
