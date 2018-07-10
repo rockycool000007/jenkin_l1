@@ -6,11 +6,12 @@ pipeline {
     stages {
         stage("clone the code") {
             steps {
-                git "https://github.com/vinitkumargoel/jenkin_l1" 
+                git url: "https://github.com/vinitkumargoel/jenkin_l1" branch: "${params.branch}"
             }
         }
         stage('Compile') {
             steps {
+                echo "${BUILD_NUMBER}"
                 sh "'javac' JavaProgram.java"
             }
         }
@@ -18,7 +19,7 @@ pipeline {
     post {
         success{
             archiveArtifacts artifacts: 'JavaProgram.class'
-            build job: 'build-java-program'
+            build job: 'build-java-program' parameters: [[$class: 'StringParameterValue', name: 'buildNumber', value: "${BUILD_NUMBER}"]]
         }
          always {  
             cleanWs()
